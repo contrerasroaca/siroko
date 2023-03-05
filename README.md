@@ -18,6 +18,7 @@ Para la ejecución es necesario correr las migraciones
 </ul>
 
 </p>
+Resultdo de las pruebas en la siguiente imagen:
 ![imagen](https://user-images.githubusercontent.com/57189870/222939087-ba806e66-0b48-49d6-91bb-973932e5536c.png)
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
