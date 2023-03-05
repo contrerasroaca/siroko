@@ -2,21 +2,23 @@
 Para la ejecución es necesario correr las migraciones
 <ul>
 <li>Modifcar archivo .env cambiando los datos de BD
-DB_CONNECTION=mysql
-DB_HOST=127.0.0.1
-DB_PORT=3306
-DB_DATABASE=
-DB_USERNAME=
-DB_PASSWORD=
+    <ol><li>DB_CONNECTION=mysql</li>
+        <li>DB_HOST=127.0.0.1</li>
+<li>DB_PORT=3306</li>
+<li>DB_DATABASE=</li>
+<li>DB_USERNAME=</li>
+<li>DB_PASSWORD=</li>
+        </ol>
 </li>
 <li>php artisan migrate --path=/database/migrations/2023_03_01_124804_create_products_table.php</li>
 <li>php artisan migrate --path=/database/migrations/2023_03_01_124840_create_cart_items_table.php</li>
 <li>Listado de productos</li>
 <li>Ejecucion de Test php artisan test</li>
-<li>Se intento aplicar DDD el directorio se llama siroko</li>
+<li>Se intento aplicar DDD el directorio se llama siroko(No pude completarlo por tiempo)</li>
 </ul>
 
 </p>
+![imagen](https://user-images.githubusercontent.com/57189870/222939087-ba806e66-0b48-49d6-91bb-973932e5536c.png)
 
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
