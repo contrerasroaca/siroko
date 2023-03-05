@@ -12,7 +12,7 @@ Para la ejecución es necesario correr las migraciones
 </li>
 <li>php artisan migrate --path=/database/migrations/2023_03_01_124804_create_products_table.php</li>
 <li>php artisan migrate --path=/database/migrations/2023_03_01_124840_create_cart_items_table.php</li>
-<li>Listado de productos</li>
+<li>Generar FAke Products php artisan db:seed --class=ProductsSeeder</li>
 <li>Ejecucion de Test php artisan test</li>
 <li>Se intento aplicar DDD el directorio se llama siroko(No pude completarlo por tiempo)</li>
 </ul>
