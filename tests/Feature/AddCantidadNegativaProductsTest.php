@@ -2,37 +2,41 @@
 
 namespace Tests\Feature;
 
-use Illuminate\Foundation\Testing\RefreshDatabase;
-use Illuminate\Foundation\Testing\WithFaker;
+
 use Tests\TestCase;
 use \App\Models\Product;
 use Faker\Generator as Faker;
 
-
-class RemoveProductsTest extends TestCase
+class AddCantidadNegativaProductsTest extends TestCase
 {
     /**
      * A basic feature test example.
      *
      * @return void
      */
-    public function test_remove()
+    public function test_Negative()
     {
+        $faker = new Faker();
 
         $product = Product::factory()->create();
 
+
         $response = $this->post('/cart/add', [
             'id' => $product->id,
-            'quantity' => 1,
+            'quantity' =>  $faker->numberBetween(-10, -1),
         ]);
 
         $response->assertStatus(200);
-
-        $response = $this->get('/cart/remove/' . $product->id);
+        $response = $this->post('/cart/add', [
+            'id' => $product->id,
+            'quantity' =>  $faker->numberBetween(-10, -1),
+        ]);
 
         $response->assertStatus(200);
-        $this->assertDatabaseMissing('cart_items', [
+        $response = $this->post('/cart/add', [
             'id' => $product->id,
+            'quantity' =>  $faker->numberBetween(1, 10),
         ]);
     }
+    
 }

@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::post('cart/add', 'App\Http\Controllers\CartController@addItem')->name('cart.add');
-Route::get('cart/remove/{id}', 'App\Http\Controllers\CartController@removeItem')->name('cart.remove');
-Route::get('/checkout', 'App\Http\Controllers\CartController@checkout')->name('cart.checkout');
-Route::get('/pay', 'App\Http\Controllers\CartController@pay')->name('cart.pay');
-Route::put('cart/updatequantity', 'App\Http\Controllers\CartController@updateQuantityByProduct')->name('cart.updabyproduct');
-Route::get('/', 'App\Http\Controllers\ProductController@index')->name('products.index');
+Route::get('/', 'App\Http\Controllers\ListProductController')->name('products.index');
+Route::get('/pay', 'App\Http\Controllers\PayController')->name('cart.pay');
+Route::get('cart/delete/{id}', 'App\Http\Controllers\DeleteItemController')->name('cart.remove');
+Route::put('cart/remove', 'App\Http\Controllers\RemoveItemController')->name('cart.updabyproduct');
+Route::get('/checkout', 'App\Http\Controllers\CheckoutController')->name('cart.checkout');
+Route::post('cart/add', 'App\Http\Controllers\AddItemController')->name('cart.add');

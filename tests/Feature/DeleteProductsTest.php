@@ -2,39 +2,36 @@
 
 namespace Tests\Feature;
 
+
 use Tests\TestCase;
 use \App\Models\Product;
-use Faker\Generator as Faker;
 
-class AddProductsTest extends TestCase
+
+
+class DeleteProductsTest extends TestCase
 {
     /**
      * A basic feature test example.
      *
      * @return void
      */
-    public function test_add()
+    public function test_remove()
     {
-        $faker = new Faker();
 
         $product = Product::factory()->create();
 
-
         $response = $this->post('/cart/add', [
             'id' => $product->id,
-            'quantity' =>  $faker->numberBetween(1, 10),
+            'quantity' => 1,
         ]);
 
         $response->assertStatus(200);
-        $response = $this->post('/cart/add', [
-            'id' => $product->id,
-            'quantity' =>  $faker->numberBetween(1, 10),
-        ]);
+
+        $response = $this->get('/cart/delete/' . $product->id);
 
         $response->assertStatus(200);
-        $response = $this->post('/cart/add', [
+        $this->assertDatabaseMissing('cart_items', [
             'id' => $product->id,
-            'quantity' =>  $faker->numberBetween(1, 10),
         ]);
     }
 }

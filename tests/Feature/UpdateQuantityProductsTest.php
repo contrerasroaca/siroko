@@ -19,18 +19,20 @@ class UpdateQuantityProductsTest extends TestCase
     {
         $faker = new Faker();
         $product = Product::factory()->create();
-
+        
         $response = $this->post('/cart/add', [
             'id' => $product->id,
             'quantity' => 1,
         ]);
+        $response->assertStatus(200);
         $initialQuantity = 1;
         $this->post('/cart/add', ['id' => $product->id, 'quantity' => $initialQuantity]);
-
+        
+        $response->assertStatus(200);
         $newQuantity = 2;
-        $this->put("/cart/updatequantity/'.{$product->id}", ['quantity' => $newQuantity]);
+        $this->put("/cart/remove'.{$product->id}", ['quantity' => $newQuantity]);
 
-
+        $response->assertStatus(200);
         $this->assertDatabaseHas('cart_items', [
             'product_id' => $product->id,
             'quantity' => 2,
