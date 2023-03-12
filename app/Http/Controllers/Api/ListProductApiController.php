@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Siroko\Cart\Infrastructure\TotaltemController;
 use Siroko\Cart\Infrastructure\SumItemController;
@@ -30,11 +31,13 @@ class ListProductApiController extends Controller
     }
     public function __invoke(Request $request)
     {
-        $products = $this->productsListController->__invoke($request);
-        $totalCartItems =  $this->totalCartItems->__invoke();
-        $totalPriceCartItems =  $this->sumCartItems->__invoke();
-
-
-        return response()->json(['products' => $products, 'totalCartItems' => $totalCartItems, 'totalPriceCartItems' => $totalPriceCartItems], 200);
+        try {
+            $products = $this->productsListController->__invoke($request);
+            $totalCartItems =  $this->totalCartItems->__invoke();
+            $totalPriceCartItems =  $this->sumCartItems->__invoke();
+            return response()->json(['products' => $products, 'totalCartItems' => $totalCartItems, 'totalPriceCartItems' => $totalPriceCartItems], 200);
+        } catch (\Exception $e) {
+            return response()->json(["result" => "Error: " . $e->getMessage()], 400);
+        }
     }
 }

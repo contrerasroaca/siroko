@@ -28,6 +28,7 @@ class ListProductController extends Controller
         $this->totalCartItems = $totalCartItems;
         $this->sumCartItems = $sumCartItems;
     }
+  
     public function __invoke(Request $request)
     {
         $list = $this->productsListController->__invoke($request);

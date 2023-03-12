@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Siroko\Cart\Infrastructure\DeleteItemController as DeleteItemControllerInfra;
 use Siroko\Cart\Infrastructure\SumItemController;
@@ -11,7 +12,7 @@ use Siroko\Cart\Infrastructure\CheckoutCartItemController;
 
 
 
-class DeleteItemController extends Controller
+class DeleteItemApiController extends Controller
 {
     //
     private $DeleteItemController;
@@ -30,14 +31,16 @@ class DeleteItemController extends Controller
 
     public function __invoke($item_id)
     {
+        try {
+            $list = $this->DeleteItemController->__invoke($item_id);
 
-        $list = $this->DeleteItemController->__invoke($item_id);
-        $totalPriceCartItems = 0;
-        $caritems = $this->CheckoutCartItemController->__invoke();
-        $totalCartItems =  $this->totalCartItems->__invoke();
-        $totalPriceCartItems =  $this->sumCartItems->__invoke();
+            $caritems = $this->CheckoutCartItemController->__invoke();
+            $totalCartItems =  $this->totalCartItems->__invoke();
+            $totalPriceCartItems =  $this->sumCartItems->__invoke();
 
-
-        return view('shoppingcart', ['cartItems' => ($caritems) ? $caritems : null, 'cartTotal' => $totalPriceCartItems, 'cartTotalItems' => $totalCartItems]);
+            return response()->json(['cartItems' => $caritems, 'totalCartItems' => $totalCartItems, 'totalPriceCartItems' => $totalPriceCartItems], 200);
+        } catch (\Exception $e) {
+            return response()->json(["result" => "Error: " . $e->getMessage()], 400);
+        }
     }
 }
