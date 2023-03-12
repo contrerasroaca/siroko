@@ -14,10 +14,13 @@ Para la ejecución es necesario correr las migraciones
 <li>php artisan migrate --path=/database/migrations/2023_03_01_124840_create_cart_items_table.php</li>
 <li>Generar FAke Products php artisan db:seed --class=ProductsSeeder</li>
 <li>Ejecucion de Test php artisan test</li>
-<li>Se intento aplicar DDD el directorio se llama siroko(No pude completarlo por tiempo)</li>
+<li>Se intento aplicar DDD el directorio se llama siroko</li>
 </ul>
 
 </p>
+Rutas
+![image](https://user-images.githubusercontent.com/57189870/224561139-af09fe9f-ecec-41a0-ba86-d5d5fc0df427.png)
+
 Resultdo de las pruebas en la siguiente imagen:
 ![imagen](https://user-images.githubusercontent.com/57189870/222939087-ba806e66-0b48-49d6-91bb-973932e5536c.png)
 
